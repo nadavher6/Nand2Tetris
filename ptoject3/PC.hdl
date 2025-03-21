@@ -1,0 +1,45 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/3/a/PC.hdl
+/**
+ * A 16-bit counter.
+ * if      reset(t): out(t+1) = 0
+ * else if load(t):  out(t+1) = in(t)
+ * else if inc(t):   out(t+1) = out(t) + 1
+ * else              out(t+1) = out(t)
+ */
+CHIP PC {
+    IN in[16], reset, load, inc;
+    OUT out[16];
+    
+    PARTS:
+    // check if inc or load are turn on 
+    Or(a=inc , b=load , out=incORload );
+    
+    // check if inc or load or reset are turn on     
+    Or(a=incORload , b=reset , out=needAchange );
+
+    //old is the last output - it came from the last Register     
+    //if (inc=1) increment 'old' by one 
+    Inc16(in=old , out=inPLUSone );   
+    Mux16(a=old , b=inPLUSone , sel=inc , out=outINC );
+
+    //if (load=1) set 'outLoad' with 'in'
+    //else set 'outLoad' with the resolt of 'outINC' 
+    Mux16(a=outINC , b=in , sel=load , out=outLoad );    
+    
+    // if (reset=1) set 'outReset' with 'false' (all zero)
+    // else set 'outReset' with the resolt of 'outLoad'
+    Mux16(a=outLoad , b=false , sel=reset , out=outReset);
+    
+    //if some bit (reset,load,inc) is turn on make a change
+    // else do nothing
+    // notice that there are 2 output 
+    //the first is 'old' that we use it in the beggining of our code
+    // the second is our output 'out'
+    Register(in=outReset , load=needAchange , out=old, out=out );
+    
+     
+
+}
