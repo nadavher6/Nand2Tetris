@@ -1,0 +1,113 @@
+class Bomb {
+    field int x;
+    field int y;
+    field boolean bomb_Touch;
+
+
+    constructor Bomb new(int Ax , int Ay) {
+        /* the x,y will be the place on the map*/
+        let x=Ax;
+        let y=Ay;
+        let bomb_Touch=false;
+        do draw_Bomb(x,y);
+        return this;
+    }
+
+    method int get_x() {
+    return x;
+    }
+    method int get_y() {
+    return y;
+    }
+    
+    method void set_bomb_Touch()
+    {
+        var Boom boom1;
+        let bomb_Touch=false;
+        do delete_Bomb(x,y);
+        let boom1 = Boom.new(x,y);
+        return;
+    }
+    method void draw_Bomb(int Ax, int Ay)
+    {
+    var int memAddress; 
+    let memAddress = 16384 + (Ay * 32) + Ax;
+
+    // column 0
+    do Memory.poke(memAddress, 128);
+    do Memory.poke(memAddress + 32, 8321);
+    do Memory.poke(memAddress + 64, 4226);
+    do Memory.poke(memAddress + 96, 3044);
+    do Memory.poke(memAddress + 128, 2040);
+    do Memory.poke(memAddress + 160, 4088);
+    do Memory.poke(memAddress + 192, 32767);
+    do Memory.poke(memAddress + 224, 4088);
+    do Memory.poke(memAddress + 256, 2032);
+    do Memory.poke(memAddress + 288, 3048);
+    do Memory.poke(memAddress + 320, 4228);
+    do Memory.poke(memAddress + 352, 8322);
+    do Memory.poke(memAddress + 384, 128);
+
+    return;
+    }
+    method void delete_Bomb(int x, int y) {
+    var int memAddress; 
+    let memAddress = 16384 + (y * 32) + x;
+
+    // Clear column 0
+    do Memory.poke(memAddress, 0);
+    do Memory.poke(memAddress + 32, 0);
+    do Memory.poke(memAddress + 64, 0);
+    do Memory.poke(memAddress + 96, 0);
+    do Memory.poke(memAddress + 128, 0);
+    do Memory.poke(memAddress + 160, 0);
+    do Memory.poke(memAddress + 192, 0);
+    do Memory.poke(memAddress + 224, 0);
+    do Memory.poke(memAddress + 256, 0);
+    do Memory.poke(memAddress + 288, 0);
+    do Memory.poke(memAddress + 320, 0);
+    do Memory.poke(memAddress + 352, 0);
+    do Memory.poke(memAddress + 384, 0);
+
+    return;
+}
+
+    method void move_up_Bomb()
+    {
+        do delete_Bomb(x,y);
+        let y = y - 2;
+        do draw_Bomb(x,y);
+        do Sys.wait(10);
+        return;
+    }
+
+    method void move_left_Bomb()
+    {
+        do delete_Bomb(x,y);
+        let x = x-1;
+        do draw_Bomb(x,y);
+        do Sys.wait(30);
+        return;
+    }
+
+    method void move_down_Bomb()
+    {
+        var Game game;
+        if( y < 220)
+        {
+            do delete_Bomb(x,y);
+            let y = y+2;
+            do draw_Bomb(x,y);
+            do Sys.wait(30);
+        }
+        else
+        {
+        do delete_Bomb(x,y);
+        let y = y + 2;
+        let game = Game.new(0,235);
+        
+
+        }
+        return;
+    }
+}

@@ -1,0 +1,106 @@
+class Whale {
+
+	field int x;
+    field int y;
+    field boolean catchStatus;
+
+    constructor Cat new(int Ax , int Ay) {
+        /* the x, y will be the place on the map */
+        let x = Ax;
+        let y = Ay;
+        let catchStatus=false;
+        do draw_Whale(x, y);
+        return this;
+    }
+    method int get_x() {
+    return x;
+    }
+    method int get_y() {
+    return y;
+    }
+    method boolean get_CatchStatus()
+    {
+        return catchStatus;
+    }
+    method void set_CatchStatus()
+    {
+        let catchStatus=true;
+        return;
+    }
+    method void move_up_Whale() {
+        
+            do delete_Whale(x, y); 
+            let y = y - 2;  
+            do draw_Whale(x, y);
+            do Sys.wait(10);
+        return;
+    }
+    method void move_down_Whale() {
+        var Game game;
+        if (y < 220) 
+        { 
+            do delete_Whale(x, y); 
+            let y = y + 2;  
+            do draw_Whale(x, y);
+            do Sys.wait(10);
+        }
+        else
+        {
+        do delete_Whale(x, y);
+        let y = y + 2;
+        let game=Game.new(0,235);
+        do game.move_up_Ten();
+        }
+        return;
+    }
+    method void move_left_Whale() {
+        
+        do delete_Whale(x, y); 
+        let x = x - 1;  
+        do draw_Whale(x, y); 
+        do Sys.wait(30);
+        return;
+    }
+
+
+	method void draw_Whale(int Ax, int Ay) {
+    var int memAddress; 
+    let memAddress = 16384 + (Ay * 32) + Ax;
+
+    do Memory.poke(memAddress, 40);
+    do Memory.poke(memAddress + 32, 16);
+    do Memory.poke(memAddress + 96, 40);
+    do Memory.poke(memAddress + 128, 16);
+    do Memory.poke(memAddress + 192, 27648);
+    do Memory.poke(memAddress + 224, 14456);
+    do Memory.poke(memAddress + 256, 4348);
+    do Memory.poke(memAddress + 288, 6654);
+    do Memory.poke(memAddress + 320, 8191);
+    do Memory.poke(memAddress + 352, 4091);
+    do Memory.poke(memAddress + 384, 2047);
+    do Memory.poke(memAddress + 416, 1023);
+    do Memory.poke(memAddress + 448, 510);
+
+    return;
+	}
+	method void delete_Whale(int Ax, int Ay) {
+    var int memAddress; 
+    let memAddress = 16384 + (Ay * 32) + Ax;
+
+    do Memory.poke(memAddress, 0);
+    do Memory.poke(memAddress + 32, 0);
+    do Memory.poke(memAddress + 96, 0);
+    do Memory.poke(memAddress + 128, 0);
+    do Memory.poke(memAddress + 192, 0);
+    do Memory.poke(memAddress + 224, 0);
+    do Memory.poke(memAddress + 256, 0);
+    do Memory.poke(memAddress + 288, 0);
+    do Memory.poke(memAddress + 320, 0);
+    do Memory.poke(memAddress + 352, 0);
+    do Memory.poke(memAddress + 384, 0);
+    do Memory.poke(memAddress + 416, 0);
+    do Memory.poke(memAddress + 448, 0);
+
+    return;
+	}
+}

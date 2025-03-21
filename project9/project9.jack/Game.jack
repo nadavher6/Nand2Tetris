@@ -1,0 +1,205 @@
+class Game {
+ 	field int x;
+    field int y;
+
+     constructor Game new(int Ax,int Ay) {
+   		let x = Ax;
+        let y = Ay;
+        do draw_Hole(x, y );
+        do draw_Limit();
+        return this;
+    }
+    method void draw_Limit()
+    {
+    	do Screen.setColor(true);
+        do Screen.drawRectangle(55, 60, 60, 250);
+        do Screen.drawRectangle(460, 60, 465, 250);
+        do Screen.drawRectangle(55, 245, 465, 250);
+        return;
+    }
+
+    method void move_up_Ten() {
+    	let y=y-10;
+    	do draw_Ten(x, y);
+    	do Sys.wait(10);
+        while (y > 0) 
+       { 
+            do delete_Ten(x, y); 
+            let y = y - 2;  
+            do draw_Ten(x, y);
+            do Sys.wait(10);
+        }
+        do delete_Ten(x, y); 
+        return;
+    }
+    method void delete_Ten(int Ax, int Ay) {
+    var int memAddress;
+    
+    // Calculate the memory address based on x (column) and y (row)
+    let memAddress = 16384 + (Ay * 32) + (Ax / 16);
+
+    // Clear column 0
+    do Memory.poke(memAddress, 0); // Clear the first row
+    do Memory.poke(memAddress + 32, 0);
+    do Memory.poke(memAddress + 64, 0);
+    do Memory.poke(memAddress + 96, 0);
+    do Memory.poke(memAddress + 128, 0);
+    do Memory.poke(memAddress + 160, 0);
+    do Memory.poke(memAddress + 192, 0);
+    do Memory.poke(memAddress + 224, 0);
+    do Memory.poke(memAddress + 256, 0);
+    do Memory.poke(memAddress + 288, 0);
+    do Memory.poke(memAddress + 320, 0);
+    do Memory.poke(memAddress + 352, 0);
+    do Memory.poke(memAddress + 384, 0);
+
+    // Clear column 1
+    do Memory.poke(memAddress + 1, 0);
+    do Memory.poke(memAddress + 33, 0);
+    do Memory.poke(memAddress + 65, 0);
+    do Memory.poke(memAddress + 97, 0);
+    do Memory.poke(memAddress + 129, 0);
+    do Memory.poke(memAddress + 161, 0);
+    do Memory.poke(memAddress + 193, 0);
+    do Memory.poke(memAddress + 225, 0);
+    do Memory.poke(memAddress + 257, 0);
+    do Memory.poke(memAddress + 289, 0);
+    do Memory.poke(memAddress + 321, 0);
+    do Memory.poke(memAddress + 353, 0);
+    do Memory.poke(memAddress + 385, 0);
+
+    // Clear column 2
+    do Memory.poke(memAddress + 2, 0);
+    do Memory.poke(memAddress + 34, 0);
+    do Memory.poke(memAddress + 66, 0);
+    do Memory.poke(memAddress + 98, 0);
+    do Memory.poke(memAddress + 130, 0);
+    do Memory.poke(memAddress + 162, 0);
+    do Memory.poke(memAddress + 194, 0);
+    do Memory.poke(memAddress + 226, 0);
+    do Memory.poke(memAddress + 258, 0);
+    do Memory.poke(memAddress + 290, 0);
+    do Memory.poke(memAddress + 322, 0);
+    do Memory.poke(memAddress + 354, 0);
+    do Memory.poke(memAddress + 386, 0);
+
+    return;
+}
+
+
+    method  void draw_Ten(int Ax, int Ay) {
+    var int memAddress;
+    
+    // Calculate the memory address based on x (column) and y (row)
+    let memAddress = 16384 + (Ay * 32) + (Ax / 16);
+
+    // column 0
+    do Memory.poke(memAddress, 192);
+    do Memory.poke(memAddress + 32, 192);
+    do Memory.poke(memAddress + 64, 192);
+    do Memory.poke(memAddress + 96, 192);
+    do Memory.poke(memAddress + 128, 192);
+    do Memory.poke(memAddress + 160, 16383);
+    do Memory.poke(memAddress + 192, 16383);
+    do Memory.poke(memAddress + 224, 192);
+    do Memory.poke(memAddress + 256, 192);
+    do Memory.poke(memAddress + 288, 192);
+    do Memory.poke(memAddress + 320, 192);
+    do Memory.poke(memAddress + 352, 192);
+    do Memory.poke(memAddress + 384, 192);
+
+    // column 1
+    do Memory.poke(memAddress + 1, -1000);
+    do Memory.poke(memAddress + 33, -1000);
+    do Memory.poke(memAddress + 65, 3096);
+    do Memory.poke(memAddress + 97, 3096);
+    do Memory.poke(memAddress + 129, 3096);
+    do Memory.poke(memAddress + 161, 3096);
+    do Memory.poke(memAddress + 193, 3096);
+    do Memory.poke(memAddress + 225, 3096);
+    do Memory.poke(memAddress + 257, 3096);
+    do Memory.poke(memAddress + 289, 3096);
+    do Memory.poke(memAddress + 321, 3096);
+    do Memory.poke(memAddress + 353, -1000);
+    do Memory.poke(memAddress + 385, -1000);
+
+    // column 2
+    do Memory.poke(memAddress + 2, 15);
+    do Memory.poke(memAddress + 34, 15);
+    do Memory.poke(memAddress + 66, 12);
+    do Memory.poke(memAddress + 98, 12);
+    do Memory.poke(memAddress + 130, 12);
+    do Memory.poke(memAddress + 162, 12);
+    do Memory.poke(memAddress + 194, 12);
+    do Memory.poke(memAddress + 226, 12);
+    do Memory.poke(memAddress + 258, 12);
+    do Memory.poke(memAddress + 290, 12);
+    do Memory.poke(memAddress + 322, 12);
+    do Memory.poke(memAddress + 354, 15);
+    do Memory.poke(memAddress + 386, 15);
+
+    return;
+	}
+
+
+    method void draw_Hole(int Ax, int Ay)
+    {
+    var int memAddress;
+    
+    // Calculate the memory address based on x, y coordinates
+    let memAddress = 16384 + (Ay * 32) + Ax;
+    
+    // column 0 (hole creation)
+    do Memory.poke(memAddress, 3);
+    do Memory.poke(memAddress + 32, 6);
+    do Memory.poke(memAddress + 64, 12);
+    do Memory.poke(memAddress + 96, 24);
+    do Memory.poke(memAddress + 128, 48);
+    do Memory.poke(memAddress + 160, 96);
+    do Memory.poke(memAddress + 192, 192);
+    do Memory.poke(memAddress + 224, 384);
+    do Memory.poke(memAddress + 256, 768);
+    do Memory.poke(memAddress + 288, -14848);
+    do Memory.poke(memAddress + 320, -5120);
+    do Memory.poke(memAddress + 352, -4096);
+    do Memory.poke(memAddress + 384, -4096);
+    do Memory.poke(memAddress + 416, -4096);
+    do Memory.poke(memAddress + 448, -4096);
+    do Memory.poke(memAddress + 480, -8192);
+    do Memory.poke(memAddress + 512, -16384);
+
+    // column 1 (hole creation)
+    do Memory.poke(memAddress + 257, 16383);
+    do Memory.poke(memAddress + 289, -1);
+    do Memory.poke(memAddress + 321, -1);
+    do Memory.poke(memAddress + 353, -1);
+    do Memory.poke(memAddress + 385, -1);
+    do Memory.poke(memAddress + 417, -1);
+    do Memory.poke(memAddress + 449, -1);
+    do Memory.poke(memAddress + 481, -1);
+    do Memory.poke(memAddress + 513, -1);
+    do Memory.poke(memAddress + 545, 16383);
+
+    // column 2 (hole creation)
+    do Memory.poke(memAddress + 2, 12288);
+    do Memory.poke(memAddress + 34, 6144);
+    do Memory.poke(memAddress + 66, 3072);
+    do Memory.poke(memAddress + 98, 1536);
+    do Memory.poke(memAddress + 130, 768);
+    do Memory.poke(memAddress + 162, 384);
+    do Memory.poke(memAddress + 194, 192);
+    do Memory.poke(memAddress + 226, 96);
+    do Memory.poke(memAddress + 258, 48);
+    do Memory.poke(memAddress + 290, 24);
+    do Memory.poke(memAddress + 322, 13);
+    do Memory.poke(memAddress + 354, 3);
+    do Memory.poke(memAddress + 386, 3);
+    do Memory.poke(memAddress + 418, 3);
+    do Memory.poke(memAddress + 450, 3);
+    do Memory.poke(memAddress + 482, 3);
+
+    return;
+    }
+}
+
+

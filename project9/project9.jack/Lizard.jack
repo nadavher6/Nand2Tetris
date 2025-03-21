@@ -1,0 +1,129 @@
+class Lizard {
+    field int x;
+    field int y;
+    field boolean catchStatus;
+
+    constructor Lizard new(int Ax , int Ay) {
+        /* the x, y will be the place on the map */
+        let x = Ax;
+        let y = Ay;
+        let catchStatus=false;
+        do draw_Lizard(x, y);
+        return this;
+    }
+    method int get_x() {
+        return x;
+    }
+    method int get_y() {
+        return y;
+    }
+    method boolean get_CatchStatus()
+    {
+        return catchStatus;
+    }
+    method void set_CatchStatus()
+    {
+        let catchStatus=true;
+        return;
+    }
+    method void move_up_Lizard() {
+        
+        do delete_Lizard(x, y); 
+        let y = y - 2;  
+        do draw_Lizard(x, y);
+        do Sys.wait(10);
+        return;
+    }
+    method void move_down_Lizard() {
+        var Game game;
+        if (y < 220) 
+        { 
+            do delete_Lizard(x, y); 
+            let y = y + 2;  
+            do draw_Lizard(x, y);
+            do Sys.wait(10);
+        }
+        else
+        {
+            do delete_Lizard(x, y);
+            let y = y + 2;
+            let game=Game.new(0,235);
+            do game.move_up_Ten();
+        }
+        return;
+    }
+    method void move_left_Lizard() {
+        
+        do delete_Lizard(x, y); 
+        let x = x - 1;  
+        do draw_Lizard(x, y); 
+        do Sys.wait(30);
+        return;
+    }
+
+    method void draw_Lizard(int Ax, int Ay) {
+        var int memAddress; 
+        let memAddress = 16384 + (Ay * 32) + Ax;
+
+        do Memory.poke(memAddress, 48);
+        do Memory.poke(memAddress + 32, 120);
+        do Memory.poke(memAddress + 64, 252);
+        do Memory.poke(memAddress + 96, 180);
+        do Memory.poke(memAddress + 128, 252);
+        do Memory.poke(memAddress + 160, 120);
+        do Memory.poke(memAddress + 192, 1136);
+        do Memory.poke(memAddress + 224, 4082);
+        do Memory.poke(memAddress + 256, 1279);
+        do Memory.poke(memAddress + 288, 498);
+        do Memory.poke(memAddress + 320, 1008);
+        do Memory.poke(memAddress + 352, 1008);
+        do Memory.poke(memAddress + 384, 4064);
+        do Memory.poke(memAddress + 416, 8128);
+        do Memory.poke(memAddress + 448, 6112);
+        do Memory.poke(memAddress + 480, 14112);
+        do Memory.poke(memAddress + 512, 5680);
+        do Memory.poke(memAddress + 544, 1568);
+        do Memory.poke(memAddress + 576, 1536);
+        do Memory.poke(memAddress + 608, 1544);
+        do Memory.poke(memAddress + 640, 1540);
+        do Memory.poke(memAddress + 672, 1540);
+        do Memory.poke(memAddress + 704, 772);
+        do Memory.poke(memAddress + 736, 392);
+        do Memory.poke(memAddress + 768, 112);
+
+        return;
+    }
+
+    method void delete_Lizard(int Ax, int Ay) {
+        var int memAddress; 
+        let memAddress = 16384 + (Ay * 32) + Ax;
+
+        do Memory.poke(memAddress, 0);
+    do Memory.poke(memAddress + 32, 0);
+    do Memory.poke(memAddress + 64, 0);
+    do Memory.poke(memAddress + 96, 0);
+    do Memory.poke(memAddress + 128, 0);
+    do Memory.poke(memAddress + 160, 0);
+    do Memory.poke(memAddress + 192, 0);
+    do Memory.poke(memAddress + 224, 0);
+    do Memory.poke(memAddress + 256, 0);
+    do Memory.poke(memAddress + 288, 0);
+    do Memory.poke(memAddress + 320, 0);
+    do Memory.poke(memAddress + 352, 0);
+    do Memory.poke(memAddress + 384, 0);
+    do Memory.poke(memAddress + 416, 0);
+    do Memory.poke(memAddress + 448, 0);
+    do Memory.poke(memAddress + 480, 0);
+    do Memory.poke(memAddress + 512, 0);
+    do Memory.poke(memAddress + 544, 0);
+    do Memory.poke(memAddress + 576, 0);
+    do Memory.poke(memAddress + 608, 0);
+    do Memory.poke(memAddress + 640, 0);
+    do Memory.poke(memAddress + 672, 0);
+    do Memory.poke(memAddress + 704, 0);
+    do Memory.poke(memAddress + 736, 0);
+    do Memory.poke(memAddress + 768, 0);
+
+        return;
+    }
+}

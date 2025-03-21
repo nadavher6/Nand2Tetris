@@ -1,0 +1,385 @@
+class Claw {
+    field int x, y;
+
+    constructor Claw new(int Ax, int Ay) {
+        let x = Ax;
+        let y = Ay;
+        do draw_Claw(x, y); // Use initial x, y to draw the claw
+        return this;
+    }
+    method void strongerWait(int cycles) {
+        var int i;
+
+        let i = 0;
+        while (i < cycles)
+        {
+            let i = i + 1;
+        }
+        return;
+    }
+
+     method void draw_Claw(int drawX, int drawY) {
+        var int memAddress;
+
+        
+    let memAddress = 16384 + (drawY * 32) + drawX;
+
+        // column 0
+    
+    do Memory.poke(memAddress, 6528);
+    do Memory.poke(memAddress +32, 6528);
+    do Memory.poke(memAddress +64, 6528);
+    do Memory.poke(memAddress +96, 6528);
+    do Memory.poke(memAddress +128, 6528);
+    do Memory.poke(memAddress +160, 6528);
+    do Memory.poke(memAddress +192, -16);
+    do Memory.poke(memAddress +224, -16);
+    do Memory.poke(memAddress +256, -3848);
+    do Memory.poke(memAddress +288, -3844);
+    do Memory.poke(memAddress +320, -3842);
+    do Memory.poke(memAddress +352, 3);
+    do Memory.poke(memAddress +384, 3);
+    do Memory.poke(memAddress +416, 3);
+    do Memory.poke(memAddress +448, 3);
+    do Memory.poke(memAddress +480, 7);
+    do Memory.poke(memAddress +512, 15);
+    do Memory.poke(memAddress +544, -32738);
+    do Memory.poke(memAddress +576, -16328);
+    do Memory.poke(memAddress +608, -8080);
+    do Memory.poke(memAddress +640, 28896);
+    do Memory.poke(memAddress +672, 12480);
+    do Memory.poke(memAddress +704, 4224);
+    // column 1
+    do Memory.poke(memAddress +257, 1);
+    do Memory.poke(memAddress +289, 3);
+    do Memory.poke(memAddress +321, 7);
+    do Memory.poke(memAddress +353, 12);
+    do Memory.poke(memAddress +385, 12);
+    do Memory.poke(memAddress +417, 12);
+    do Memory.poke(memAddress +449, 12);
+    do Memory.poke(memAddress +481, 14);
+    do Memory.poke(memAddress +513, 15);
+    do Memory.poke(memAddress +545, 7);
+    do Memory.poke(memAddress +577, 1);
+    return;
+    
+    }
+
+     method void semi_OpenClaw(int drawX, int drawY) {
+    var int memadd; 
+    let memadd = 16384 + (drawY * 32) + drawX;
+    // column 0
+    do Memory.poke(memadd, -26624);
+    do Memory.poke(memadd + 32, -26624);
+    do Memory.poke(memadd + 64, -26624);
+    do Memory.poke(memadd + 96, -26624);
+    do Memory.poke(memadd + 128, -26624);
+    do Memory.poke(memadd + 160, -26624);
+    do Memory.poke(memadd + 192, -512);
+    do Memory.poke(memadd + 224, -512);
+    do Memory.poke(memadd + 256, 3968);
+    do Memory.poke(memadd + 288, 4032);
+    do Memory.poke(memadd + 320, 4064);
+    do Memory.poke(memadd + 352, 112);
+    do Memory.poke(memadd + 384, 60);
+    do Memory.poke(memadd + 416, 30);
+    do Memory.poke(memadd + 448, 14);
+    do Memory.poke(memadd + 480, 3);
+    do Memory.poke(memadd + 512, 7);
+    do Memory.poke(memadd + 544, 15);
+    do Memory.poke(memadd + 576, 156);
+    do Memory.poke(memadd + 608, 248);
+    do Memory.poke(memadd + 640, 240);
+    do Memory.poke(memadd + 672, 96);
+    // column 1
+    do Memory.poke(memadd + 1, 1);
+    do Memory.poke(memadd + 33, 1);
+    do Memory.poke(memadd + 65, 1);
+    do Memory.poke(memadd + 97, 1);
+    do Memory.poke(memadd + 129, 1);
+    do Memory.poke(memadd + 161, 1);
+    do Memory.poke(memadd + 193, 7);
+    do Memory.poke(memadd + 225, 7);
+    do Memory.poke(memadd + 257, 31);
+    do Memory.poke(memadd + 289, 63);
+    do Memory.poke(memadd + 321, 127);
+    do Memory.poke(memadd + 353, 480);
+    do Memory.poke(memadd + 385, 1984);
+    do Memory.poke(memadd + 417, 3968);
+    do Memory.poke(memadd + 449, 3584);
+    do Memory.poke(memadd + 481, 6144);
+    do Memory.poke(memadd + 513, 7168);
+    do Memory.poke(memadd + 545, 7680);
+    do Memory.poke(memadd + 577, 1824);
+    do Memory.poke(memadd + 609, 992);
+    do Memory.poke(memadd + 641, 480);
+    do Memory.poke(memadd + 673, 192);
+    return;
+    
+    }
+
+    method void deleteSemiOpenClaw(int drawX, int drawY) {
+    var int memadd;
+    let memadd = 16384 + (drawY * 32) + drawX;
+
+    // Clear column 0
+    do Memory.poke(memadd, 0);
+    do Memory.poke(memadd + 32, 0);
+    do Memory.poke(memadd + 64, 0);
+    do Memory.poke(memadd + 96, 0);
+    do Memory.poke(memadd + 128, 0);
+    do Memory.poke(memadd + 160, 0);
+    do Memory.poke(memadd + 192, 0);
+    do Memory.poke(memadd + 224, 0);
+    do Memory.poke(memadd + 256, 0);
+    do Memory.poke(memadd + 288, 0);
+    do Memory.poke(memadd + 320, 0);
+    do Memory.poke(memadd + 352, 0);
+    do Memory.poke(memadd + 384, 0);
+    do Memory.poke(memadd + 416, 0);
+    do Memory.poke(memadd + 448, 0);
+    do Memory.poke(memadd + 480, 0);
+    do Memory.poke(memadd + 512, 0);
+    do Memory.poke(memadd + 544, 0);
+    do Memory.poke(memadd + 576, 0);
+    do Memory.poke(memadd + 608, 0);
+    do Memory.poke(memadd + 640, 0);
+    do Memory.poke(memadd + 672, 0);
+
+    // Clear column 1
+    do Memory.poke(memadd + 1, 0);
+    do Memory.poke(memadd + 33, 0);
+    do Memory.poke(memadd + 65, 0);
+    do Memory.poke(memadd + 97, 0);
+    do Memory.poke(memadd + 129, 0);
+    do Memory.poke(memadd + 161, 0);
+    do Memory.poke(memadd + 193, 0);
+    do Memory.poke(memadd + 225, 0);
+    do Memory.poke(memadd + 257, 0);
+    do Memory.poke(memadd + 289, 0);
+    do Memory.poke(memadd + 321, 0);
+    do Memory.poke(memadd + 353, 0);
+    do Memory.poke(memadd + 385, 0);
+    do Memory.poke(memadd + 417, 0);
+    do Memory.poke(memadd + 449, 0);
+    do Memory.poke(memadd + 481, 0);
+    do Memory.poke(memadd + 513, 0);
+    do Memory.poke(memadd + 545, 0);
+    do Memory.poke(memadd + 577, 0);
+    do Memory.poke(memadd + 609, 0);
+    do Memory.poke(memadd + 641, 0);
+    do Memory.poke(memadd + 673, 0);
+
+    return;
+    }
+
+    method void open_Claw(int drawX, int drawY) {
+    var int memadd2; 
+    let memadd2 = 16384 + (drawY * 32) + drawX;
+    // column 0
+    do Memory.poke(memadd2, -26624);
+    do Memory.poke(memadd2 + 32, -26624);
+    do Memory.poke(memadd2 + 64, -26624);
+    do Memory.poke(memadd2 + 96, -26624);
+    do Memory.poke(memadd2 + 128, -26624);
+    do Memory.poke(memadd2 + 160, -26624);
+    do Memory.poke(memadd2 + 192, -512);
+    do Memory.poke(memadd2 + 224, -392);
+    do Memory.poke(memadd2 + 256, 4095);
+    do Memory.poke(memadd2 + 288, 4095);
+    do Memory.poke(memadd2 + 320, 4035);
+    do Memory.poke(memadd2 + 352, 3);
+    do Memory.poke(memadd2 + 384, 3);
+    do Memory.poke(memadd2 + 416, 3);
+    // column 1
+    do Memory.poke(memadd2 + 1, 1);
+    do Memory.poke(memadd2 + 33, 1);
+    do Memory.poke(memadd2 + 65, 1);
+    do Memory.poke(memadd2 + 97, 1);
+    do Memory.poke(memadd2 + 129, 1);
+    do Memory.poke(memadd2 + 161, 1);
+    do Memory.poke(memadd2 + 193, 7);
+    do Memory.poke(memadd2 + 225, 487);
+    do Memory.poke(memadd2 + 257, 4095);
+    do Memory.poke(memadd2 + 289, 4095);
+    do Memory.poke(memadd2 + 321, 3135);
+    do Memory.poke(memadd2 + 353, 3072);
+    do Memory.poke(memadd2 + 385, 3072);
+    do Memory.poke(memadd2 + 417, 3072);
+    return;
+    }
+
+    method void delete_Open_Claw(int drawX, int drawY) {
+    var int memadd2; 
+    let memadd2 = 16384 + (drawY * 32) + drawX;
+    // column 0
+    do Memory.poke(memadd2, 0);
+    do Memory.poke(memadd2 + 32, 0);
+    do Memory.poke(memadd2 + 64, 0);
+    do Memory.poke(memadd2 + 96, 0);
+    do Memory.poke(memadd2 + 128, 0);
+    do Memory.poke(memadd2 + 160, 0);
+    do Memory.poke(memadd2 + 192, 0);
+    do Memory.poke(memadd2 + 224, 0);
+    do Memory.poke(memadd2 + 256, 0);
+    do Memory.poke(memadd2 + 288, 0);
+    do Memory.poke(memadd2 + 320, 0);
+    do Memory.poke(memadd2 + 352, 0);
+    do Memory.poke(memadd2 + 384, 0);
+    do Memory.poke(memadd2 + 416, 0);
+    // column 1
+    do Memory.poke(memadd2 + 1, 0);
+    do Memory.poke(memadd2 + 33, 0);
+    do Memory.poke(memadd2 + 65, 0);
+    do Memory.poke(memadd2 + 97, 0);
+    do Memory.poke(memadd2 + 129, 0);
+    do Memory.poke(memadd2 + 161, 0);
+    do Memory.poke(memadd2 + 193, 0);
+    do Memory.poke(memadd2 + 225, 0);
+    do Memory.poke(memadd2 + 257, 0);
+    do Memory.poke(memadd2 + 289, 0);
+    do Memory.poke(memadd2 + 321, 0);
+    do Memory.poke(memadd2 + 353, 0);
+    do Memory.poke(memadd2 + 385, 0);
+    do Memory.poke(memadd2 + 417, 0);
+    return;
+    }
+
+    method void delete_Claw(int drawX, int drawY) {
+    var int memadd2; 
+    let memadd2 = 16384 + (drawY * 32) + drawX;
+    // column 0
+    do Memory.poke(memadd2, 0);
+    do Memory.poke(memadd2 + 32, 0);
+    do Memory.poke(memadd2 + 64, 0);
+    do Memory.poke(memadd2 + 96, 0);
+    do Memory.poke(memadd2 + 128, 0);
+    do Memory.poke(memadd2 + 160, 0);
+    do Memory.poke(memadd2 + 192, 0);
+    do Memory.poke(memadd2 + 224, 0);
+    do Memory.poke(memadd2 + 256, 0);
+    do Memory.poke(memadd2 + 288, 0);
+    do Memory.poke(memadd2 + 320, 0);
+    do Memory.poke(memadd2 + 352, 0);
+    do Memory.poke(memadd2 + 384, 0);
+    do Memory.poke(memadd2 + 416, 0);
+    do Memory.poke(memadd2 +448, 0);
+    do Memory.poke(memadd2 +480, 0);
+    do Memory.poke(memadd2 +512, 0);
+    do Memory.poke(memadd2 +544, 0);
+    do Memory.poke(memadd2 +576, 0);
+    do Memory.poke(memadd2 +608, 0);
+    do Memory.poke(memadd2 +640, 0);
+    do Memory.poke(memadd2 +672, 0);
+    do Memory.poke(memadd2 +704, 0);
+    // column 1
+    do Memory.poke(memadd2 +257, 0);
+    do Memory.poke(memadd2 +289, 0);
+    do Memory.poke(memadd2 +321, 0);
+    do Memory.poke(memadd2 +353, 0);
+    do Memory.poke(memadd2 +385, 0);
+    do Memory.poke(memadd2 +417, 0);
+    do Memory.poke(memadd2 +449, 0);
+    do Memory.poke(memadd2 +481, 0);
+    do Memory.poke(memadd2 +513, 0);
+    do Memory.poke(memadd2 +545, 0);
+    do Memory.poke(memadd2 +577, 0);
+    return;
+    }
+    method void little_arm(int drawX, int drawY) {
+    var int memAddress; 
+    let memAddress = 16384+(drawY * 32) + drawX;
+    // column 0
+    do Memory.poke(memAddress, 6528); 
+    do Memory.poke(memAddress + 32, 6528);
+    
+    return;
+    }
+    method void delete_little_arm(int drawX, int drawY) {
+    var int memAddress; 
+    let memAddress = 16384+(drawY * 32) + drawX;
+    // column 0
+    do Memory.poke(memAddress, 0); 
+    do Memory.poke(memAddress + 32, 0);
+    
+    return;
+    }
+
+    method void open()
+    {
+        
+        do delete_Claw(x,y);
+        do semi_OpenClaw(x,y);
+        do deleteSemiOpenClaw(x,y); 
+        do open_Claw(x,y);
+        
+
+        return;
+    }
+    method void close()
+    {
+        
+        do Sys.wait(1000);
+        do delete_Open_Claw(x,y); 
+        do semi_OpenClaw(x,y);
+        return;
+    }
+
+    
+    method int get_y() {
+    return y;
+    }
+    
+    method int get_x() {
+    return x;
+    }
+    method void move_right_Claw() 
+    {
+        do delete_Claw(x, y); 
+        let x = x + 1;  
+        do draw_Claw(x, y); 
+        return;
+    }
+    method void move_left_Claw() 
+    {
+        do delete_Claw(x, y); 
+        let x = x - 1;  
+        do draw_Claw(x, y); 
+        return;
+    }
+    
+    method void move_down() { 
+        do little_arm(x,y);
+        do delete_Claw(x,y);
+        do open_Claw(x,y);
+        let y = y + 1;   
+        do open_Claw(x,y);  
+        return;
+    }
+    method void down_semi()
+    {
+        do delete_Open_Claw(x,y);
+        do semi_OpenClaw(x,y);
+        return;
+    }
+    method void move_up() {
+    if (y>0) 
+    { 
+        
+        do delete_little_arm(x,y);
+        do deleteSemiOpenClaw(x,y);
+        
+        let y = y - 2; 
+        
+        do semi_OpenClaw(x,y);
+         
+    }
+        return;
+    }
+
+
+
+
+    
+
+} 

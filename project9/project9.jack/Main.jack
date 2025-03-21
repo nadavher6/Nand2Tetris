@@ -1,0 +1,1676 @@
+class Main{
+	function void main ()
+	{
+	var Game game;
+	var Claw myClaw;
+	var Bomb bomb1;
+	var Bomb bomb2;
+	var Bomb bomb3;
+	var Cat cat1;
+	var Cat cat2;
+	var Pap pap2;
+	var Ping ping1;
+	var Ping ping2;
+	var Dino dino1;
+	var Dino dino2;
+	var Whale whale1;
+	var Whale whale2;
+	var Lizard lizard1;
+	var Lizard lizard2;
+	var Bunny bunny1;
+	var Bunny bunny2;
+
+	var boolean flag;
+	var boolean flag1;
+	var boolean try;
+	var boolean allgame;
+	var boolean secsess;
+	var String begin;
+	var int score;
+	var int temp1;
+	var int temp2;
+	var int temp3;
+	var int temp4;
+	var int temp5;
+	var int claw_direction;
+	var int level;
+	var  int Target_score;
+	var String end;
+
+
+	// this is the location of the animal
+	var int x_Cat1;
+	var int y_Cat1;
+	var int x_Cat2;
+	var int y_Cat2;
+	var int x_Ping1;
+	var int y_Ping1;
+	var int x_Ping2;
+	var int y_Ping2;
+	var int x_Dino1;
+	var int y_Dino1;
+	var int x_Dino2;
+	var int y_Dino2;
+	var int x_Whale1;
+	var int y_Whale1;
+	var int x_Whale2;
+	var int y_Whale2;
+	var int x_Lizard1;
+	var int y_Lizard1;
+	var int x_Lizard2;
+	var int y_Lizard2;
+	var int x_Bunny1;
+	var int y_Bunny1;
+	var int x_Bunny2;
+	var int y_Bunny2;
+	var int x_bomb1;
+	var int y_bomb1;
+	var int x_bomb2;
+	var int y_bomb2;
+	var int x_bomb3;
+	var int y_bomb3;
+
+
+
+	
+
+
+	
+	
+	let allgame=true;
+	while(allgame)
+	{
+		
+		let score=0;
+		let Target_score=120;
+		let flag1=true;
+		let level=15000;
+		////////////////////////////
+		while (flag1)
+		 {
+			do Output.moveCursor(1, 10);
+	    	do Output.printString("Welcome to Dan and Nadav's Papet Machine");
+	    	do Output.moveCursor(4, 12);
+	    	//do Output.printString("Press Space to start playing");
+	    	//do Output.moveCursor(7, 30);
+	    	do Output.printString("Please choose your level");
+	    	do Output.moveCursor(5,40);
+			do Output.printString("Easy - Press 1");
+	    	do Output.moveCursor(7,40);
+	    	do Output.printString("Medium - Press 2");
+	    	do Output.moveCursor(9,40);
+	    	do Output.printString("Expert - Press 3");
+	    	do Output.moveCursor(10,40);
+	    	let level = Keyboard.readChar();
+	    	if((level = 49)|(level = 50)|(level = 51)) {
+				let level = level - 48;
+				let level = 15000/level;
+				do Output.moveCursor(1, 17);
+	    		do Screen.clearScreen();
+				do Output.printString("Press Space to start playing");
+	    		do Output.moveCursor(7, 30);
+				let begin = Keyboard.readChar();  
+	        	if (begin=32){
+
+	        	let flag1 = false;
+	        	}
+				
+	    	}
+	    	do Screen.clearScreen();
+	    }
+
+		do Output.moveCursor(1, 57);
+	    do Output.printString("Score :");
+	    do Output.moveCursor(2, 58);
+	    do Output.printInt(score);
+	    
+	    //set the animal location 
+	    let x_Cat1=8;
+	    let y_Cat1=200;
+	    let cat1=Cat.new(x_Cat1,y_Cat1);
+
+	    let x_Cat2=13;
+	    let y_Cat2=160;
+	    let cat2=Cat.new(x_Cat2,y_Cat2);
+
+	    let x_Ping1=23;
+		let y_Ping1=80;
+		let ping1 = Ping.new(x_Ping1,y_Ping1);
+
+		let x_Ping2=19;
+		let y_Ping2=220;
+		let ping2 = Ping.new(x_Ping2,y_Ping2);
+
+		let x_Dino1=17;
+		let y_Dino1=195;
+		let dino1=Dino.new(x_Dino1,y_Dino1);	
+		
+		let x_Dino2=25;
+		let y_Dino2=160;
+		let dino2=Dino.new(x_Dino2,y_Dino2);	
+
+		let x_Whale1=6;
+		let y_Whale1=80;
+		let whale1=Whale.new(x_Whale1,y_Whale1);
+
+		let x_Whale2=21;
+		let y_Whale2=165;
+		let whale2=Whale.new(x_Whale2,y_Whale2);
+
+		let x_Lizard1 = 9;
+		let y_Lizard1 = 100;
+		let lizard1 = Lizard.new(x_Lizard1, y_Lizard1);
+
+		let x_Lizard2 = 25;
+		let y_Lizard2 = 210;
+		let lizard2 = Lizard.new(x_Lizard2, y_Lizard2);
+
+		let x_Bunny1 = 10;
+		let y_Bunny1 = 220;
+		let bunny1 = Bunny.new(x_Bunny1, y_Bunny1);
+
+		let x_Bunny2 = 16;
+		let y_Bunny2 = 100;
+		let bunny2 = Bunny.new(x_Bunny2, y_Bunny2);
+
+		let x_bomb1 = 7;
+		let y_bomb1 = 150;
+		let bomb1 = Bomb.new(x_bomb1, y_bomb1);
+
+ 		let x_bomb2 = 15;
+		let y_bomb2 = 130;
+		let bomb2 = Bomb.new(x_bomb2, y_bomb2);
+
+ 		let x_bomb3 = 21;
+		let y_bomb3 = 210;
+		let bomb3 = Bomb.new(x_bomb3, y_bomb3);
+
+
+
+
+
+
+
+
+	   ///////
+
+		let game=Game.new(0,235);
+		let myClaw = Claw.new(21, 0);
+		let claw_direction=1;
+	   ///////
+
+		
+
+		
+		let begin = Keyboard.readChar();  
+		let flag = true;
+		let try = false;
+	    while (flag)
+	    {	
+	    	let begin=0;
+	    	let secsess=false;
+	    	
+	    	if (claw_direction=1)
+	    	{
+	    		do myClaw.move_left_Claw();
+	    		do myClaw.strongerWait(level);	
+	    		if (myClaw.get_x()<5)
+	    		{
+	    			let claw_direction=2;
+	    		}
+	    	}
+	    	if (claw_direction=2)
+	    	{
+	    		do myClaw.move_right_Claw();
+	    		do myClaw.strongerWait(level);	
+	    		if (myClaw.get_x()>25)
+	    		{
+	    			let claw_direction=1;
+	    		}
+	    	}
+	    	
+	    	
+	    	
+	    	
+
+			let begin = Keyboard.keyPressed();
+	    	if (begin=32) 
+	    	{
+	            let try = true;
+
+	    	}
+
+	    	if (try)
+	    	{
+
+	    		///////////////////////////////startPing1/////////////////////////////////
+	    		// try to catch ping1 but no good
+		    	let temp2=x_Ping1-1;
+		    	if (~(secsess))
+	    		{
+		    		if (myClaw.get_x()=temp2)
+		    		{
+		    			let temp1=y_Ping1-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    			let temp1= y_Ping1 -45;
+		    		 	while (myClaw.get_y() >temp1)
+		    			{
+		    				
+		      				do myClaw.move_up();
+		      				do ping1.move_up_Ping();
+		      				do Sys.wait(10); 
+		    			}
+		    			while ((myClaw.get_y()>0)|(ping1.get_y() < y_Ping1))
+		    			{
+		    				do myClaw.strongerWait(3000);
+		    				if (myClaw.get_y()>0)
+		    				{
+		      				do myClaw.move_up();
+		      				}
+		      				if (ping1.get_y() < y_Ping1)
+		      				{
+		      					do ping1.move_down_Ping();
+		      				}
+		 
+		    			}
+		    			do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    			let try = false;
+		    			let secsess=true;
+
+		    		}
+		    	}
+		    	if (~(secsess))
+	    		{
+
+		    		// try to catch ping1
+		    		let temp1=x_Ping1;
+		    		if (myClaw.get_x()=temp1)
+		    		{
+		    		 
+
+		    			let temp1=y_Ping1-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    		 	while (myClaw.get_y() >0)
+		    			{
+		    				//catch the ping1
+		      				do myClaw.move_up();
+		      				do ping1.move_up_Ping();
+		      				do Sys.wait(10); 
+		    			}
+		    			while (ping1.get_x() > 1)
+		    			{
+		    				do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    				do myClaw.move_left_Claw();
+		    				do ping1.move_left_Ping();
+		    				do Sys.wait(10);
+		    			}
+		    			while (ping1.get_y() < 222)
+		    			{
+		    				if (myClaw.get_x()<6)
+		    				{
+		    				do myClaw.move_right_Claw();
+		    				}
+		    				do ping1.move_down_Ping();
+		    			}
+		    			let score=score+10;
+						do Output.moveCursor(2, 58);
+		    			do Output.printInt(score);
+		    			let secsess=true;
+		    			let x_Ping1=99;
+
+		    			let try = false;
+		    		}
+		    	}
+		    	///////////////////////////////WHALE1/////////////////////////////////
+
+		    	// try to catch whale1 but no good
+				if (~(secsess))
+				{	
+					let temp2 = x_Whale1;
+					if (myClaw.get_x() = temp2)
+					{
+						let temp1 = y_Whale1 - 25;
+						while (myClaw.get_y() < temp1)
+						{
+							do myClaw.move_down();
+							do Sys.wait(10); 
+						}
+						let temp1=y_Whale1-45;
+						while (myClaw.get_y() > temp1)
+						{
+							// catch the whale1
+							do myClaw.move_up();
+							do whale1.move_up_Whale();
+							do Sys.wait(10); 
+						}
+						while ((myClaw.get_y() > 0) | (whale1.get_y() < y_Whale1))
+						{
+							do myClaw.strongerWait(3000);
+							if (myClaw.get_y() > 0)
+							{
+								do myClaw.move_up();
+							}
+							if (whale1.get_y() < y_Whale1)
+							{
+								do whale1.move_down_Whale();
+							}
+						}
+						do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+						let try = false;
+						let secsess = true;
+					}
+				}
+
+
+		    	if(~(secsess))
+		    	{
+		    		let temp1=x_Whale1-1;
+		    		// try to catch whale1
+		    		if (myClaw.get_x()=temp1)
+		    		{
+		    			let temp1=y_Whale1-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    		 	while (myClaw.get_y() >0)
+		    			{
+		    				//catch the whale1
+		      				do myClaw.move_up();
+		      				do whale1.move_up_Whale();
+		      				do Sys.wait(10); 
+		    			}
+		    			while (whale1.get_x() > 1)
+		    			{
+		    				do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    				do myClaw.move_left_Claw();
+		    				do whale1.move_left_Whale();
+		    				do Sys.wait(10);
+		    			}
+		    			while (whale1.get_y() < 222)
+		    			{
+		    				if (myClaw.get_x()<6)
+		    				{
+		    					do myClaw.move_right_Claw();
+		    				}
+		    				do whale1.move_down_Whale();
+		    			}
+		    			let score=score+10;
+						do Output.moveCursor(2, 58);
+		    			do Output.printInt(score);
+		    			let x_Whale1=99;
+		    			let y_Whale1=99;
+		    			let secsess=true;
+		    			let try = false;
+
+		    		}
+		    	}
+		    	///////////////////////////////BUNNY2/////////////////////////////////
+		    	// try to catch Bunny2 but no good
+		    if (~(secsess))
+		    {   
+		        let temp2 = x_Bunny2-1;
+		        let temp3 = x_Bunny2+1;
+		        if ((myClaw.get_x() = temp2)|(myClaw.get_x() = temp3))
+		        {
+		            let temp1 = y_Bunny2 - 25;
+		            while (myClaw.get_y() < temp1)
+		            {
+		                do myClaw.move_down();
+		                do Sys.wait(10); 
+		            }
+		            let temp1=y_Bunny2-45;
+		            while (myClaw.get_y() > temp1)
+		            {
+		                // catch the Bunny2
+		                do myClaw.move_up();
+		                do bunny2.move_up_Bunny();
+		                do Sys.wait(10); 
+		            }
+		            while ((myClaw.get_y() > 0) | (bunny2.get_y() < y_Bunny2))
+		            {
+		            	do myClaw.strongerWait(3000);
+		                if (myClaw.get_y() > 0)
+		                {
+		                    do myClaw.move_up();
+		                }
+		                if (bunny2.get_y() < y_Bunny2)
+		                {
+		                    do bunny2.move_down_Bunny();
+		                }
+		            }
+		            do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+		            let try = false;
+		            let secsess = true;
+		        }
+		    }
+
+		    if (~(secsess))
+		    {
+		        let temp1 = x_Bunny2;
+		        // try to catch Bunny2
+		        if (myClaw.get_x() = temp1)
+		        {
+		            let temp1 = y_Bunny2 - 25;
+		            while (myClaw.get_y() < temp1)
+		            {
+		                do myClaw.move_down();
+		                do Sys.wait(10); 
+		            }
+		            while (myClaw.get_y() > 0)
+		            {
+		                // catch the Bunny2
+		                do myClaw.move_up();
+		                do bunny2.move_up_Bunny();
+		                do Sys.wait(10); 
+		            }
+		            while (bunny2.get_x() > 1)
+		            {
+		                do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+		                do myClaw.move_left_Claw();
+		                do bunny2.move_left_Bunny();
+		                do Sys.wait(10);
+		            }
+		            while (bunny2.get_y() < 222)
+		            {
+		                if (myClaw.get_x() < 6)
+		                {
+		                    do myClaw.move_right_Claw();
+		                }
+		                do bunny2.move_down_Bunny();
+		            }
+		            let score = score + 10;
+		            do Output.moveCursor(2, 58);
+		            do Output.printInt(score);
+		            let x_Bunny2 = 99;
+		            let y_Bunny2 = 99;
+		            let secsess = true;
+		            let try = false;
+		        }
+		    }
+		    ///////////////////////////////Lizard1/////////////////////////////////
+		    // try to catch Lizard1 but no good
+			if (~(secsess))
+			{	
+			    let temp2 = x_Lizard1-1;
+			    if (myClaw.get_x() = temp2)
+			    {
+			        let temp1 = y_Lizard1 - 25;
+			        while (myClaw.get_y() < temp1)
+			        {
+			            do myClaw.move_down();
+			            do Sys.wait(10); 
+			        }
+			        let temp1=y_Lizard1-45;
+			        while (myClaw.get_y() > temp1)
+			        {
+			            // catch the Lizard1
+			            do myClaw.move_up();
+			            do lizard1.move_up_Lizard();
+			            do Sys.wait(10); 
+			        }
+			        while ((myClaw.get_y() > 0) | (lizard1.get_y() < y_Lizard1))
+			        {
+			        	do myClaw.strongerWait(3000);
+			            if (myClaw.get_y() > 0)
+			            {
+			                do myClaw.move_up();
+			            }
+			            if (lizard1.get_y() < y_Lizard1)
+			            {
+			                do lizard1.move_down_Lizard();
+			            }
+			        }
+			        do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+			        let try = false;
+			        let secsess = true;
+			    }
+			}
+
+			if (~(secsess))
+			{
+			    let temp1 = x_Lizard1;
+			    // try to catch Lizard1
+			    if (myClaw.get_x() = temp1)
+			    {
+			        let temp1 = y_Lizard1 - 25;
+			        while (myClaw.get_y() < temp1)
+			        {
+			            do myClaw.move_down();
+			            do Sys.wait(10); 
+			        }
+			        while (myClaw.get_y() > 0)
+			        {
+			            // catch the Lizard1
+			            do myClaw.move_up();
+			            do lizard1.move_up_Lizard();
+			            do Sys.wait(10); 
+			        }
+			        while (lizard1.get_x() > 1)
+			        {
+			            do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+			            do myClaw.move_left_Claw();
+			            do lizard1.move_left_Lizard();
+			            do Sys.wait(10);
+			        }
+			        while (lizard1.get_y() < 222)
+			        {
+			            if (myClaw.get_x() < 6)
+			            {
+			                do myClaw.move_right_Claw();
+			            }
+			            do lizard1.move_down_Lizard();
+			        }
+			        let score = score + 10;
+			        do Output.moveCursor(2, 58);
+			        do Output.printInt(score);
+			        let x_Lizard1 = 99;
+			        let y_Lizard1 = 99;
+			        let secsess = true;
+			        let try = false;
+			    }
+			}
+			///////////////////////////////BOMB2/////////////////////////////////
+
+ 		    	// try to catch bomb2 but no good
+				if (~(secsess))
+				{	
+					let temp2 = x_bomb2-1;
+					if (myClaw.get_x() = temp2)
+					{
+						let temp1 = y_bomb2 - 25;
+						while (myClaw.get_y() < temp1)
+						{
+							do myClaw.move_down();
+							do Sys.wait(10); 
+						}
+						while (myClaw.get_y() > 30)
+						{
+							// catch the bomb2
+							do myClaw.move_up();
+							do bomb2.move_up_Bomb();
+							do Sys.wait(10); 
+						}
+						while ((myClaw.get_y() > 0) | (bomb2.get_y() < y_bomb2))
+						{
+							if (myClaw.get_y() > 0)
+							{
+								do myClaw.move_up();
+							}
+							if (bomb2.get_y() < y_bomb2)
+							{
+								do bomb2.move_down_Bomb();
+							}
+						}
+						do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+						let try = false;
+						let secsess = true;
+					}
+				}
+
+ 
+ 
+ 		    	if(~(secsess))
+		    	{
+		    		let temp1=x_bomb2;
+		    		// try to catch BOMB2
+		    		if (myClaw.get_x()=temp1)
+		    		{
+		    			let temp1=y_bomb2-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    		 	while (myClaw.get_y() >0)
+		    			{
+		    				//catch the bomb2
+		      				do myClaw.move_up();
+		      				do bomb2.move_up_Bomb(); //// need to move bomb up
+		      				do Sys.wait(10); 
+		    			}
+		    			while (bomb2.get_x() > 1)
+		    			{
+		    				do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    				do myClaw.move_left_Claw();
+		    				do bomb2.move_left_Bomb(); //// need to move bomb left
+		    				do Sys.wait(10);
+		    			}
+		    			while (bomb2.get_y() < 222)
+		    			{
+		    				if (myClaw.get_x()<6)
+		    				{
+		    					do myClaw.move_right_Claw();
+		    				}
+		    				do bomb2.move_down_Bomb(); //// need to do bomb down
+		    			}
+		    			let secsess=true;
+		    			let try = false;
+
+ 		    			do Screen.clearScreen();
+	    				do Output.moveCursor(1, 3);
+	    				do Output.printString("YOU LOST!!");
+	    				do Output.moveCursor(13, 6);
+	    				do Output.printString("Go again? Yes - press 'Y' || No - press 'N' ");
+	    				
+	    				
+	    				let end = Keyboard.readChar();
+	     				if ((end = 89)|(end=121))
+	    				{
+	    				let flag = false;
+	    				do Screen.clearScreen();
+	    				let flag1=false;
+	     				}
+	   					if ((end = 78) | (end =110))
+	    				{
+	    				do Screen.clearScreen();
+	    				do myClaw.strongerWait(10000);
+	    				do myClaw.strongerWait(10000);
+	    				do myClaw.strongerWait(10000);
+	    				do Output.moveCursor(1, 7);
+	    				do Output.printString("THANK YOU FOR PLAYING - COME AGAIN SOON :) ");
+
+ 	    				let flag = false;
+	    				let allgame=false;
+	    				let flag1=false;
+	    			
+	    				}
+	    			}
+		    	}
+		    	
+		    	/////////////////////////////////////////////////////////////////////
+
+
+	    		///////////////////////////////BOMB1/////////////////////////////////
+
+ 		    	// try to catch bomb1 but no good
+				if (~(secsess))
+				{	
+					let temp2 = x_bomb1-1;
+					if (myClaw.get_x() = temp2)
+					{
+						let temp1 = y_bomb1 - 25;
+						while (myClaw.get_y() < temp1)
+						{
+							do myClaw.move_down();
+							do Sys.wait(10); 
+						}
+						while (myClaw.get_y() > 30)
+						{
+							// catch the bomb1
+							do myClaw.move_up();
+							do bomb1.move_up_Bomb();
+							do Sys.wait(10); 
+						}
+						while ((myClaw.get_y() > 0) | (bomb1.get_y() < y_bomb1))
+						{
+							if (myClaw.get_y() > 0)
+							{
+								do myClaw.move_up();
+							}
+							if (bomb1.get_y() < y_bomb1)
+							{
+								do bomb1.move_down_Bomb();
+							}
+						}
+						do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+						let try = false;
+						let secsess = true;
+					}
+				}
+
+ 		    	if(~(secsess))
+		    	{
+		    		let temp1=x_bomb1;
+		    		// try to catch cat1
+		    		if (myClaw.get_x()=temp1)
+		    		{
+		    			let temp1=y_bomb1-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    		 	while (myClaw.get_y() >0)
+		    			{
+		    				//catch the cat1
+		      				do myClaw.move_up();
+		      				do bomb1.move_up_Bomb(); //// need to move bomb up
+		      				do Sys.wait(10); 
+		    			}
+		    			while (bomb1.get_x() > 1)
+		    			{
+		    				do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    				do myClaw.move_left_Claw();
+		    				do bomb1.move_left_Bomb(); //// need to move bomb left
+		    				do Sys.wait(10);
+		    			}
+		    			while (bomb1.get_y() < 222)
+		    			{
+		    				if (myClaw.get_x()<6)
+		    				{
+		    					do myClaw.move_right_Claw();
+		    				}
+		    				do bomb1.move_down_Bomb(); //// need to do bomb down
+		    			}
+		    			let secsess=true;
+		    			let try = false;
+
+ 		    			do Screen.clearScreen();
+	    				do Output.moveCursor(1, 3);
+	    				do Output.printString("YOU LOST!!");
+	    				do Output.moveCursor(13, 6);
+	    				do Output.printString("Go again? Yes - press 'Y' || No - press 'N' ");
+	    				
+	    				
+	    				let end = Keyboard.readChar();
+	     				if ((end = 89)|(end=121))
+	    				{
+	    				let flag = false;
+	    				do Screen.clearScreen();
+	    				let flag1=false;
+	     				}
+	   					if ((end = 78) | (end =110))
+	    				{
+	    				do Screen.clearScreen();
+	    				do myClaw.strongerWait(10000);
+	    				do myClaw.strongerWait(10000);
+	    				do myClaw.strongerWait(10000);
+	    				do Output.moveCursor(1, 7);
+	    				do Output.printString("THANK YOU FOR PLAYING - COME AGAIN SOON :) ");
+
+ 	    				let flag = false;
+	    				let allgame=false;
+	    				let flag1=false;
+	    			
+	    				}
+	    			}
+
+ 		    	}
+		    	
+		    	/////////////////////////////////////////////////////////////////////
+ 				///////////////////////////////CAT2/////////////////////////////////
+
+		    	let temp2=x_Cat2-1;
+	    		let temp3=x_Cat2+1;
+	    		// try to catch cat2 but no good
+		    	if (~(secsess))
+	    		{
+		    		if ((myClaw.get_x()=temp2)|(myClaw.get_x()=temp3))
+		    		{
+		    			let temp1=y_Cat2-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    			let temp1=y_Cat2 -45;
+		    		 	while (myClaw.get_y() >temp1)
+		    			{
+		    				//catch the cat2
+		      				do myClaw.move_up();
+		      				do cat2.move_up_Cat();
+		      				do Sys.wait(10); 
+		    			}
+		    			while ((myClaw.get_y()>0)|(cat2.get_y() < y_Cat2))
+		    			{
+		    				do myClaw.strongerWait(3000);
+		    				if (myClaw.get_y()>0)
+		    				{
+		      				do myClaw.move_up();
+		      				}
+		      				if (cat2.get_y() < y_Cat2)
+		      				{
+		      					do cat2.move_down_Cat();
+		      				}
+		 
+		    			}
+		    			do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    			let try = false;
+		    			let secsess=true;
+
+		    		}
+		    	}
+
+	    		// try to catch cat2
+	    		let temp1=x_Cat2;
+	    		if (~(secsess))
+	    		{
+		    		if (myClaw.get_x()=temp1)
+		    		{
+
+		    			let temp1=y_Cat2-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    		 	while (myClaw.get_y() >0)
+		    			{
+		    				//catch the cat2
+		      				do myClaw.move_up();
+		      				do cat2.move_up_Cat();
+		      				do Sys.wait(10); 
+		    			}
+		    			while (cat2.get_x() > 1)
+		    			{
+		    				do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    				do myClaw.move_left_Claw();
+		    				do cat2.move_left_Cat();
+		    				do Sys.wait(10);
+		    			}
+		    			while (cat2.get_y() < 222)
+		    			{
+		    				if (myClaw.get_x()<6)
+		    				{
+		    				do myClaw.move_right_Claw();
+		    				}
+		    				do cat2.move_down_Cat();
+		    			}
+		    			let score=score+10;
+						do Output.moveCursor(2, 58);
+		    			do Output.printInt(score);
+		    			let x_Cat2=99;
+		    			let y_Cat2=99;
+		    			let secsess=true;
+		    			let try = false;
+		    		}
+		    	}
+		    	///////////////////////////////whale2/////////////////////////////////
+		    	// try to catch whale2 but no good
+				if (~(secsess))
+				{	
+					let temp2 = x_Whale2 ;
+					if (myClaw.get_x() = temp2)
+					{
+						let temp1 = y_Whale2 - 25;
+						while (myClaw.get_y() < temp1)
+						{
+							do myClaw.move_down();
+							do Sys.wait(10); 
+						}
+						let temp1=y_Whale2-45;
+						while (myClaw.get_y() > temp1)
+						{
+							// catch the whale2
+							do myClaw.move_up();
+							do whale2.move_up_Whale();
+							do Sys.wait(10); 
+						}
+
+						while ((myClaw.get_y() > 0) | (whale2.get_y() < y_Whale2))
+						{
+							do myClaw.strongerWait(3000);
+							if (myClaw.get_y() > 0)
+							{
+								do myClaw.move_up();
+							}
+							if (whale2.get_y() < y_Whale2)
+							{
+								do whale2.move_down_Whale();
+							}
+						}
+						do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+						let try = false;
+						let secsess = true;
+					}
+				}
+
+				if (~(secsess))
+				{
+					let temp1 = x_Whale2-1;
+					// try to catch whale2
+					if (myClaw.get_x() = temp1)
+					{
+						let temp1 = y_Whale2 - 25;
+						while (myClaw.get_y() < temp1)
+						{
+							do myClaw.move_down();
+							do Sys.wait(10); 
+						}
+						while (myClaw.get_y() > 0)
+						{
+							// catch the whale2
+							do myClaw.move_up();
+							do whale2.move_up_Whale();
+							do Sys.wait(10); 
+						}
+						while (whale2.get_x() > 1)
+						{
+							do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+							do myClaw.move_left_Claw();
+							do whale2.move_left_Whale();
+							do Sys.wait(10);
+						}
+						while (whale2.get_y() < 222)
+						{
+							if (myClaw.get_x() < 6)
+							{
+								do myClaw.move_right_Claw();
+							}
+							do whale2.move_down_Whale();
+						}
+						let score = score + 10;
+						do Output.moveCursor(2, 58);
+						do Output.printInt(score);
+						let x_Whale2 = 99;
+						let y_Whale2 = 99;
+						let secsess = true;
+						let try = false;
+					}
+				}
+
+				//////////////////////////////Dino2/////////////////////////////////
+
+				// try to catch dino2 but no good
+		    	let temp2=x_Dino2-1;
+		    	if (~(secsess))
+	    		{
+		    		if (myClaw.get_x()=temp2)
+		    		{
+		    			let temp1=y_Dino2-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    			let temp1= y_Dino2 -45;	    			
+		    		 	while (myClaw.get_y() >temp1)
+		    			{
+		    				//catch the dino2
+		      				do myClaw.move_up();
+		      				do dino2.move_up_Dino();
+		      				do Sys.wait(10); 
+		    			}
+		    			while ((myClaw.get_y()>0)|(dino2.get_y() < y_Dino2))
+		    			{
+		    				do myClaw.strongerWait(3000);
+		    				if (myClaw.get_y()>0)
+		    				{
+		      				do myClaw.move_up();
+		      				}
+		      				if (dino2.get_y() < y_Dino2)
+		      				{
+		      					do dino2.move_down_Dino();
+		      				}
+		 
+		    			}
+		    			do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    			let try = false;
+		    			let secsess=true;
+
+		    		}
+		    	}
+	    		if (~(secsess))
+	    		{
+		    		// try to catch dino2
+		    		let temp1=x_Dino2;
+		    		
+		    		if (myClaw.get_x()=temp1)
+		    		{
+
+		    			let temp1=y_Dino2-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    		 	while (myClaw.get_y() >0)
+		    			{
+		    				//catch the dino2
+		      				do myClaw.move_up();
+		      				do dino2.move_up_Dino();
+		      				do Sys.wait(10); 
+		    			}
+		    			while (dino2.get_x() > 1)
+		    			{
+		    				do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    				do myClaw.move_left_Claw();
+		    				do dino2.move_left_Dino();
+		    				do Sys.wait(10);
+		    			}
+		    			while (dino2.get_y() < 222)
+		    			{
+		    				if (myClaw.get_x()<6)
+		    				{
+		    				do myClaw.move_right_Claw();
+		    				}
+		    				do dino2.move_down_Dino();
+		    			}
+		    			let score=score+10;
+						do Output.moveCursor(2, 58);
+		    			do Output.printInt(score);
+		    			let x_Dino2=99;
+		    			let secsess=true;
+		    			let try = false;
+		    		}
+		    	}
+
+		    	///////////////////////////////Dino1/////////////////////////////////
+
+		    	// try to catch dino1 but no good
+		    	let temp2=x_Dino1-1;
+		    	if (~(secsess))
+	    		{
+		    		if (myClaw.get_x()=temp2)
+		    		{
+		    			let temp1=y_Dino1-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    			let temp1= y_Dino1 -45;
+		    		 	while (myClaw.get_y() >temp1)
+		    			{
+		    				//catch the cat2
+		      				do myClaw.move_up();
+		      				do dino1.move_up_Dino();
+		      				do Sys.wait(10); 
+		    			}
+		    			while ((myClaw.get_y()>0)|(dino1.get_y() < y_Dino1))
+		    			{
+		    				do myClaw.strongerWait(3000);
+		    				if (myClaw.get_y()>0)
+		    				{
+		      				do myClaw.move_up();
+		      				}
+		      				if (dino1.get_y() < y_Dino1)
+		      				{
+		      					do dino1.move_down_Dino();
+		      				}
+		 
+		    			}
+		    			do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    			let try = false;
+		    			let secsess=true;
+
+		    		}
+		    	}
+
+		    	if (~(secsess))
+	    		{
+	    			// try to catch dino1
+		    		let temp1=x_Dino1;
+		    		if (myClaw.get_x()=temp1)
+		    		{
+
+		    			let temp1=y_Dino1-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    		 	while (myClaw.get_y() >0)
+		    			{
+		    				//catch the dino1
+		      				do myClaw.move_up();
+		      				do dino1.move_up_Dino();
+		      				do Sys.wait(10); 
+		    			}
+		    			while (dino1.get_x() > 1)
+		    			{
+		    				do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    				do myClaw.move_left_Claw();
+		    				do dino1.move_left_Dino();
+		    				do Sys.wait(10);
+		    			}
+		    			while (dino1.get_y() < 222)
+		    			{
+		    				if (myClaw.get_x()<6)
+		    				{
+		    				do myClaw.move_right_Claw();
+		    				}
+		    				do dino1.move_down_Dino();
+		    			}
+		    			let score=score+10;
+						do Output.moveCursor(2, 58);
+		    			do Output.printInt(score);
+		    			let x_Dino1=99;
+		    			let secsess=true;
+		    			let try = false;
+		    		}
+		    	}
+
+	    		
+
+ 				///////////////////////////////CAT1/////////////////////////////////
+
+ 				// try to catch cat1 but no good
+	    		if (~(secsess))
+	    		{	
+	    			let temp1=x_Cat1;
+	    			let temp2=x_Cat1-1;
+	    			let temp3=x_Cat1+1;
+	    		
+		    		if ((myClaw.get_x()=temp2)|(myClaw.get_x()=temp3))
+		    		{
+		    			let temp1=y_Cat1-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    			let temp1=y_Cat1 -45;
+		    		 	while (myClaw.get_y() >temp1)
+		    			{
+		    				//catch the cat1
+		      				do myClaw.move_up();
+		      				do cat1.move_up_Cat();
+		      				do Sys.wait(10); 
+		    			}
+		    			while ((myClaw.get_y()>0)|(cat1.get_y() < y_Cat1))
+		    			{
+		    				do myClaw.strongerWait(3000);
+		    				if (myClaw.get_y()>0)
+		    				{
+		      				do myClaw.move_up();
+		      				}
+		      				if (cat1.get_y() < y_Cat1)
+		      				{
+		      					do cat1.move_down_Cat();
+		      				}
+		 
+		    			}
+		    			do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    			let try = false;
+		    			let secsess=true;
+
+		    		}
+		    	}
+
+
+		    	if(~(secsess))
+		    	{
+		    		let temp1=x_Cat1;
+		    		// try to catch cat1
+		    		if (myClaw.get_x()=temp1)
+		    		{
+		    			let temp1=y_Cat1-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    		 	while (myClaw.get_y() >0)
+		    			{
+		    				//catch the cat1
+		      				do myClaw.move_up();
+		      				do cat1.move_up_Cat();
+		      				do Sys.wait(10); 
+		    			}
+		    			while (cat1.get_x() > 1)
+		    			{
+		    				do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    				do myClaw.move_left_Claw();
+		    				do cat1.move_left_Cat();
+		    				do Sys.wait(10);
+		    			}
+		    			while (cat1.get_y() < 222)
+		    			{
+		    				if (myClaw.get_x()<6)
+		    				{
+		    					do myClaw.move_right_Claw();
+		    				}
+		    				do cat1.move_down_Cat();
+		    			}
+		    			let score=score+10;
+						do Output.moveCursor(2, 58);
+		    			do Output.printInt(score);
+		    			let x_Cat1=99;
+		    			let y_Cat1=99;
+		    			let secsess=true;
+		    			let try = false;
+
+		    		}
+		    	}
+
+ 		    	
+ 		    	///////////////////////////////BOMB3/////////////////////////////////
+
+ 		    	// try to catch bomb3 but no good
+				if (~(secsess))
+				{	
+					let temp2 = x_bomb3-1;
+					if (myClaw.get_x() = temp2)
+					{
+						let temp1 = y_bomb3 - 25;
+						while (myClaw.get_y() < temp1)
+						{
+							do myClaw.move_down();
+							do Sys.wait(10); 
+						}
+						while (myClaw.get_y() > 30)
+						{
+							// catch the bomb3
+							do myClaw.move_up();
+							do bomb3.move_up_Bomb();
+							do Sys.wait(10); 
+						}
+						while ((myClaw.get_y() > 0) | (bomb3.get_y() < y_bomb3))
+						{
+							if (myClaw.get_y() > 0)
+							{
+								do myClaw.move_up();
+							}
+							if (bomb3.get_y() < y_bomb3)
+							{
+								do bomb3.move_down_Bomb();
+							}
+						}
+						do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+						let try = false;
+						let secsess = true;
+					}
+				}
+		    	if(~(secsess))
+		    	{
+		    		let temp1=x_bomb3;
+		    		// try to catch BOMB3
+		    		if (myClaw.get_x()=temp1)
+		    		{
+		    			let temp1=y_bomb3-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    		 	while (myClaw.get_y() >0)
+		    			{
+		    				//catch the bomb3
+		      				do myClaw.move_up();
+		      				do bomb3.move_up_Bomb(); //// need to move bomb up
+		      				do Sys.wait(10); 
+		    			}
+		    			while (bomb3.get_x() > 1)
+		    			{
+		    				do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    				do myClaw.move_left_Claw();
+		    				do bomb3.move_left_Bomb(); //// need to move bomb left
+		    				do Sys.wait(10);
+		    			}
+		    			while (bomb3.get_y() < 222)
+		    			{
+		    				if (myClaw.get_x()<6)
+		    				{
+		    					do myClaw.move_right_Claw();
+		    				}
+		    				do bomb3.move_down_Bomb(); //// need to do bomb down
+		    			}
+		    			let secsess=true;
+		    			let try = false;
+
+ 		    			do Screen.clearScreen();
+	    				do Output.moveCursor(1, 3);
+	    				do Output.printString("YOU LOST!!");
+	    				do Output.moveCursor(13, 6);
+	    				do Output.printString("Go again? Yes - press 'Y' || No - press 'N' ");
+	    				
+	    				
+	    				let end = Keyboard.readChar();
+	     				if ((end = 89)|(end=121))
+	    				{
+	    				let flag = false;
+	    				do Screen.clearScreen();
+	    				let flag1=false;
+	     				}
+	   					if ((end = 78) | (end =110))
+	    				{
+	    				do Screen.clearScreen();
+	    				do myClaw.strongerWait(10000);
+	    				do myClaw.strongerWait(10000);
+	    				do myClaw.strongerWait(10000);
+	    				do Output.moveCursor(1, 7);
+	    				do Output.printString("THANK YOU FOR PLAYING - COME AGAIN SOON :) ");
+
+ 	    				let flag = false;
+	    				let allgame=false;
+	    				let flag1=false;
+	    			
+	    				}
+	    			}
+		    	}
+		    	
+		    	/////////////////////////////////////////////////////////////////////
+
+		    	///////////////////////////////BUNNY1/////////////////////////////////
+
+
+		    	// try to catch Bunny1 but no good
+				if (~(secsess))
+				{	
+
+			    let temp2 = x_Bunny1-1;
+			    let temp3 = x_Bunny1+1;
+			     if ((myClaw.get_x() = temp2)|(myClaw.get_x() = temp3))
+			    {
+			        let temp1 = y_Bunny1 - 25;
+			        while (myClaw.get_y() < temp1)
+			        {
+			            do myClaw.move_down();
+			            do Sys.wait(10); 
+			        }
+			        let temp1=y_Bunny1-45;
+			        while (myClaw.get_y() > temp1)
+			        {
+			            // catch the Bunny1
+			            do myClaw.move_up();
+			            do bunny1.move_up_Bunny();
+			            do Sys.wait(10); 
+			        }
+			        while ((myClaw.get_y() > 0) | (bunny1.get_y() < y_Bunny1))
+			        {
+			        	do myClaw.strongerWait(3000);
+			            if (myClaw.get_y() > 0)
+			            {
+			                do myClaw.move_up();
+			            }
+			            if (bunny1.get_y() < y_Bunny1)
+			            {
+			                do bunny1.move_down_Bunny();
+			            }
+			        }
+			        do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+			        let try = false;
+			        let secsess = true;
+			    }
+			}
+
+			if (~(secsess))
+			{
+			    let temp1 = x_Bunny1;
+			    // try to catch Bunny1
+			    if (myClaw.get_x() = temp1)
+			    {
+			        let temp1 = y_Bunny1 - 25;
+			        while (myClaw.get_y() < temp1)
+			        {
+			            do myClaw.move_down();
+			            do Sys.wait(10); 
+			        }
+			        while (myClaw.get_y() > 0)
+			        {
+			            // catch the Bunny1
+			            do myClaw.move_up();
+			            do bunny1.move_up_Bunny();
+			            do Sys.wait(10); 
+			        }
+			        while (bunny1.get_x() > 1)
+			        {
+			            do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+			            do myClaw.move_left_Claw();
+			            do bunny1.move_left_Bunny();
+			            do Sys.wait(10);
+			        }
+			        while (bunny1.get_y() < 222)
+			        {
+			            if (myClaw.get_x() < 6)
+			            {
+			                do myClaw.move_right_Claw();
+			            }
+			            do bunny1.move_down_Bunny();
+			        }
+			        let score = score + 10;
+			        do Output.moveCursor(2, 58);
+			        do Output.printInt(score);
+			        let x_Bunny1 = 99;
+			        let y_Bunny1 = 99;
+			        let secsess = true;
+			        let try = false;
+			    }
+			}
+			
+
+			///////////////////////////////LIZARD2/////////////////////////////////
+
+			// try to catch Lizard2 but no good
+			if (~(secsess))
+			{    
+			    let temp2 = x_Lizard2 - 1;
+			    if (myClaw.get_x() = temp2)
+			    {
+			        let temp1 = y_Lizard2 - 25;
+			        while (myClaw.get_y() < temp1)
+			        {
+			            do myClaw.move_down();
+			            do Sys.wait(10); 
+			        }
+			        let temp1=y_Lizard2-45;
+			        while (myClaw.get_y() > temp1)
+			        {
+			            // catch the Lizard2
+			            do myClaw.move_up();
+			            do lizard2.move_up_Lizard();
+			            do Sys.wait(10); 
+			        }
+			        while ((myClaw.get_y() > 0) | (lizard2.get_y() < y_Lizard2))
+			        {
+			        	do myClaw.strongerWait(3000);
+			            if (myClaw.get_y() > 0)
+			            {
+			                do myClaw.move_up();
+			            }
+			            if (lizard2.get_y() < y_Lizard2)
+			            {
+			                do lizard2.move_down_Lizard();
+			            }
+			        }
+			        do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+			        let try = false;
+			        let secsess = true;
+			    }
+			}
+
+			if (~(secsess))
+			{
+			    let temp1 = x_Lizard2;
+			    // try to catch Lizard2
+			    if (myClaw.get_x() = temp1)
+			    {
+			        let temp1 = y_Lizard2 - 25;
+			        while (myClaw.get_y() < temp1)
+			        {
+			            do myClaw.move_down();
+			            do Sys.wait(10); 
+			        }
+			        while (myClaw.get_y() > 0)
+			        {
+			            // catch the Lizard2
+			            do myClaw.move_up();
+			            do lizard2.move_up_Lizard();
+			            do Sys.wait(10); 
+			        }
+			        while (lizard2.get_x() > 1)
+			        {
+			            do myClaw.deleteSemiOpenClaw(myClaw.get_x(), myClaw.get_y());
+			            do myClaw.move_left_Claw();
+			            do lizard2.move_left_Lizard();
+			            do Sys.wait(10);
+			        }
+			        while (lizard2.get_y() < 222)
+			        {
+			            if (myClaw.get_x() < 6)
+			            {
+			                do myClaw.move_right_Claw();
+			            }
+			            do lizard2.move_down_Lizard();
+			        }
+			        let score = score + 10;
+			        do Output.moveCursor(2, 58);
+			        do Output.printInt(score);
+			        let x_Lizard2 = 99;
+			        let y_Lizard2 = 99;
+			        let secsess = true;
+			        let try = false;
+			    }
+			}
+
+
+
+		 		
+
+		    	
+
+		    	///////////////////////////////PING2/////////////////////////////////
+		    	
+		    	// try to catch ping2 but no good
+		    	let temp2=x_Ping2-1;
+		    	if (~(secsess))
+	    		{
+		    		if (myClaw.get_x()=temp2)
+		    		{
+		    			let temp1=y_Ping2-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    			let temp1= y_Ping2 -45;
+		    		 	while (myClaw.get_y() >temp1)
+		    			{
+		    				//catch the cat2
+		      				do myClaw.move_up();
+		      				do ping2.move_up_Ping();
+		      				do Sys.wait(10); 
+		    			}
+		    			while ((myClaw.get_y()>0)|(ping2.get_y() < y_Ping2))
+		    			{
+		    				do myClaw.strongerWait(3000);
+		    				if (myClaw.get_y()>0)
+		    				{
+		      				do myClaw.move_up();
+		      				}
+		      				if (ping2.get_y() < y_Ping2)
+		      				{
+		      					do ping2.move_down_Ping();
+		      				}
+		 
+		    			}
+		    			do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    			let try = false;
+		    			let secsess=true;
+
+		    		}
+		    	}
+
+
+		    	if (~(secsess))
+	    		{
+		    		// try to catch ping2
+		    		let temp1=x_Ping2;
+		    		let temp2=x_Ping2-1;
+		    		if ((myClaw.get_x()=temp1)|(myClaw.get_x()=temp2))
+		    		{
+
+		    			let temp1=y_Ping2-25;
+		    			while ( myClaw.get_y() < temp1 )
+		    			{
+		    			do myClaw.move_down();
+		        		do Sys.wait(10); 
+		    			}
+		    		 	while (myClaw.get_y() >0)
+		    			{
+		    				//catch the ping2
+		      				do myClaw.move_up();
+		      				do ping2.move_up_Ping();
+		      				do Sys.wait(10); 
+		    			}
+		    			while (ping2.get_x() > 1)
+		    			{
+		    				do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+		    				do myClaw.move_left_Claw();
+		    				do ping2.move_left_Ping();
+		    				do Sys.wait(10);
+		    			}
+		    			while (ping2.get_y() < 222)
+		    			{
+		    				if (myClaw.get_x()<6)
+		    				{
+		    				do myClaw.move_right_Claw();
+		    				}
+		    				do ping2.move_down_Ping();
+		    			}
+		    			let score=score+10;
+						do Output.moveCursor(2, 58);
+		    			do Output.printInt(score);
+		    			let x_Ping2=99;
+		    			let secsess=true;
+		    			let try = false;
+		    		}
+		    	}
+
+		    	
+
+	    		//go all the way down 
+	    		if (~(secsess))
+	    		{
+	    			while ( myClaw.get_y() < 200)
+	    			{
+	    			do myClaw.move_down();
+	        		do Sys.wait(10); 
+	    			}
+	    			while (myClaw.get_y() >0)
+	    			{
+	    				//catch the cat2
+	      				do myClaw.move_up();
+	      				do Sys.wait(10); 
+	    			}
+	    			do myClaw.deleteSemiOpenClaw(myClaw.get_x(),myClaw.get_y());
+	    			let try = false;
+	    		}
+	    		if(score = Target_score)
+    			{
+    			let flag1=true;
+				while (flag1)
+		 		{
+	     			do Screen.clearScreen();
+	    			do Output.moveCursor(1, 3);
+	    			do Output.printString("WOW , ITS AMAZING ");
+	    			do Output.moveCursor(4, 6);
+	    			do Output.printString("GREAT JOB");
+	    			do Output.moveCursor(7, 9);
+	    			do Output.printString("YOU CATCH THE DOLLS BETTER");
+	    			do Output.moveCursor(10, 12);
+	    			do Output.printString("THAN ANYONE WHO'S BEEN HERE SO FAR!");
+	    			do Output.moveCursor(13, 6);
+	    			do Output.printString("Go again? Yes - press 'Y' || No - press 'N' ");
+	    			
+	    			let end = Keyboard.readChar();
+
+	     			if ((end = 89)|(end=121))
+	    				{
+	    				let flag = false;
+	    				do Screen.clearScreen();
+	    				let flag1=false;
+	     				}
+	   				if ((end = 78) | (end =110))
+	    			{
+	    			do Screen.clearScreen();
+	    			do myClaw.strongerWait(10000);
+	    			do myClaw.strongerWait(10000);
+	    			do myClaw.strongerWait(10000);
+	    			do Output.moveCursor(1, 7);
+	    			do Output.printString("THANK YOU FOR PLAYING - COME AGAIN SOON :) ");
+	    			let flag = false;
+	    			let allgame=false;
+	    			let flag1=false;
+	    			
+	    			}
+	    		}
+	 		}
+	    }	
+	 } 
+	 }  
+
+	return;
+	}
+}

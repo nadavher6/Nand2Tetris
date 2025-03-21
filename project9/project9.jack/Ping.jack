@@ -1,0 +1,140 @@
+class Ping {
+    field int x;
+    field int y;
+    field boolean catchStatus;
+
+    constructor Ping new(int Ax , int Ay)
+    {
+        /* the x, y will be the place on the map */
+        let x = Ax;
+        let y = Ay;
+        let catchStatus=false;
+        do draw_Ping(x, y);
+        return this;
+    }
+    method int get_x() {
+    return x;
+    }
+    method int get_y() {
+    return y;
+    }
+    method boolean get_CatchStatus()
+    {
+        return catchStatus;
+    }
+    method void set_CatchStatus()
+    {
+        let catchStatus=true;
+        return;
+    }
+
+    method void move_up_Ping()
+    {
+        do delete_Ping(x, y); 
+        let y = y - 2;  
+        do draw_Ping(x, y);
+        do Sys.wait(10);
+
+        return;
+    }
+
+    method void move_down_Ping()
+    {
+        var Game game;
+
+        if (y < 220) 
+        { 
+            do delete_Ping(x, y); 
+            let y = y + 2;  
+            do draw_Ping(x, y);
+            do Sys.wait(10);
+        }
+        else
+        {
+        do delete_Ping(x, y);
+        let y = y + 2; 
+        let game=Game.new(0,235);
+        do game.move_up_Ten();
+        }
+        return;
+    }
+
+    method void move_left_Ping() {
+    
+        do delete_Ping(x, y); 
+        let x = x - 1;  
+        do draw_Ping(x, y); 
+        do Sys.wait(30);
+        return;
+    }
+
+    method void delete_Ping(int Ax, int Ay) {
+    var int memAddress;
+    let memAddress = 16384 + (Ay * 32) + Ax;
+
+    // Deleting Ping at position (Ax, Ay)
+    // column 0 (overwriting with zero to erase the Ping)
+    do Memory.poke(memAddress, 0);       // Clear pixel at (Ax, Ay)
+    do Memory.poke(memAddress + 32, 0);
+    do Memory.poke(memAddress + 64, 0);
+    do Memory.poke(memAddress + 96, 0);
+    do Memory.poke(memAddress + 128, 0);
+    do Memory.poke(memAddress + 160, 0);
+    do Memory.poke(memAddress + 192, 0);
+    do Memory.poke(memAddress + 224, 0);
+    do Memory.poke(memAddress + 256, 0);
+    do Memory.poke(memAddress + 288, 0);
+    do Memory.poke(memAddress + 320, 0);
+    do Memory.poke(memAddress + 352, 0);
+    do Memory.poke(memAddress + 384, 0);
+    do Memory.poke(memAddress + 416, 0);
+    do Memory.poke(memAddress + 448, 0);
+    do Memory.poke(memAddress + 480, 0);
+    do Memory.poke(memAddress + 512, 0);
+    do Memory.poke(memAddress + 544, 0);
+    do Memory.poke(memAddress + 576, 0);
+    do Memory.poke(memAddress + 608, 0);
+    do Memory.poke(memAddress + 640, 0);
+
+    // column 1 (overwriting with zero to erase the Ping)
+    do Memory.poke(memAddress + 385, 0);
+    do Memory.poke(memAddress + 417, 0);
+    do Memory.poke(memAddress + 449, 0);
+
+    return;
+    }
+
+    method void draw_Ping(int Ax, int Ay) {
+    var int memAddress; 
+    let memAddress = 16384 + (Ay * 32) + Ax;
+
+    // column 0
+    do Memory.poke(memAddress, 7680);
+    do Memory.poke(memAddress + 32, 16128);
+    do Memory.poke(memAddress + 64, 13184);
+    do Memory.poke(memAddress + 96, 10688);
+    do Memory.poke(memAddress + 128, 29152);
+    do Memory.poke(memAddress + 160, 5088);
+    do Memory.poke(memAddress + 192, 4080);
+    do Memory.poke(memAddress + 224, 8184);
+    do Memory.poke(memAddress + 256, 14844);
+    do Memory.poke(memAddress + 288, 28796);
+    do Memory.poke(memAddress + 320, -8130);
+    do Memory.poke(memAddress + 352, -8138);
+    do Memory.poke(memAddress + 384, -8169);
+    do Memory.poke(memAddress + 416, -24549);
+    do Memory.poke(memAddress + 448, 8217);
+    do Memory.poke(memAddress + 480, 8216);
+    do Memory.poke(memAddress + 512, 12312);
+    do Memory.poke(memAddress + 544, 12344);
+    do Memory.poke(memAddress + 576, 6256);
+    do Memory.poke(memAddress + 608, 8176);
+    do Memory.poke(memAddress + 640, 16120);
+
+    // column 1
+    do Memory.poke(memAddress + 385, 1);
+    do Memory.poke(memAddress + 417, 1);
+    do Memory.poke(memAddress + 449, 1);
+
+    return;
+}   }

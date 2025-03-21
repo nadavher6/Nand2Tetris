@@ -1,0 +1,174 @@
+class Boom {
+	field int x;
+	field int y;
+
+
+	constructor Boom new(int Ax , int Ay) {
+        /* the x,y will be the place on the map*/
+        let x = Ax;
+        let y = Ay;
+        do draw_Boom(x,y);
+        do draw_up_line(x,y-20);
+        do draw_down_line(x,y+20);
+        return this;
+    }
+    method void draw_down_line(int Ax, int Ay) {
+    var int memAddress; 
+    let memAddress = 16384 + (Ay * 32) + Ax;
+
+    // column 0
+    do Memory.poke(memAddress, 12288);
+    do Memory.poke(memAddress + 32, 6144);
+    do Memory.poke(memAddress + 64, 3072);
+    do Memory.poke(memAddress + 96, 1536);
+    do Memory.poke(memAddress + 128, 768);
+    do Memory.poke(memAddress + 160, 384);
+    do Memory.poke(memAddress + 192, 192);
+    do Memory.poke(memAddress + 224, 96);
+    do Memory.poke(memAddress + 256, 48);
+    do Memory.poke(memAddress + 288, 24);
+    do Memory.poke(memAddress + 320, 12);
+    do Memory.poke(memAddress + 352, 6);
+    do Memory.poke(memAddress + 384, 3);
+
+    // column 1
+    do Memory.poke(memAddress + 1, 384);
+    do Memory.poke(memAddress + 33, 384);
+    do Memory.poke(memAddress + 65, 384);
+    do Memory.poke(memAddress + 97, 384);
+    do Memory.poke(memAddress + 129, 384);
+    do Memory.poke(memAddress + 161, 384);
+    do Memory.poke(memAddress + 193, 384);
+    do Memory.poke(memAddress + 225, 384);
+    do Memory.poke(memAddress + 257, 384);
+    do Memory.poke(memAddress + 289, 384);
+    do Memory.poke(memAddress + 321, 384);
+    do Memory.poke(memAddress + 353, 384);
+    do Memory.poke(memAddress + 385, 384);
+
+    // column 2
+    do Memory.poke(memAddress + 2, 12);
+    do Memory.poke(memAddress + 34, 24);
+    do Memory.poke(memAddress + 66, 48);
+    do Memory.poke(memAddress + 98, 96);
+    do Memory.poke(memAddress + 130, 192);
+    do Memory.poke(memAddress + 162, 384);
+    do Memory.poke(memAddress + 194, 768);
+    do Memory.poke(memAddress + 226, 1536);
+    do Memory.poke(memAddress + 258, 3072);
+    do Memory.poke(memAddress + 290, 6144);
+    do Memory.poke(memAddress + 322, 12288);
+    do Memory.poke(memAddress + 354, 24576);
+    do Memory.poke(memAddress + 386, -16384);
+
+    return;
+}
+
+   method void draw_up_line(int Ax, int Ay) {
+    var int memAddress; 
+    let memAddress = 16384 + (Ay * 32) + Ax;
+
+    // column 0
+    do Memory.poke(memAddress + 64, 3);
+    do Memory.poke(memAddress + 96, 6);
+    do Memory.poke(memAddress + 128, 12);
+    do Memory.poke(memAddress + 160, 24);
+    do Memory.poke(memAddress + 192, 48);
+    do Memory.poke(memAddress + 224, 96);
+    do Memory.poke(memAddress + 256, 192);
+    do Memory.poke(memAddress + 288, 384);
+    do Memory.poke(memAddress + 320, 768);
+    do Memory.poke(memAddress + 352, 1536);
+    do Memory.poke(memAddress + 384, 3072);
+
+    // column 1
+    do Memory.poke(memAddress + 1, 384);
+    do Memory.poke(memAddress + 33, 384);
+    do Memory.poke(memAddress + 65, 384);
+    do Memory.poke(memAddress + 97, 384);
+    do Memory.poke(memAddress + 129, 384);
+    do Memory.poke(memAddress + 161, 384);
+    do Memory.poke(memAddress + 193, 384);
+    do Memory.poke(memAddress + 225, 384);
+    do Memory.poke(memAddress + 257, 384);
+    do Memory.poke(memAddress + 289, 384);
+    do Memory.poke(memAddress + 321, 384);
+    do Memory.poke(memAddress + 353, 384);
+    do Memory.poke(memAddress + 385, 384);
+
+    // column 2
+    do Memory.poke(memAddress + 66, 24576);
+    do Memory.poke(memAddress + 98, 12288);
+    do Memory.poke(memAddress + 130, 6144);
+    do Memory.poke(memAddress + 162, 3072);
+    do Memory.poke(memAddress + 194, 1536);
+    do Memory.poke(memAddress + 226, 896);
+    do Memory.poke(memAddress + 258, 192);
+    do Memory.poke(memAddress + 290, 96);
+    do Memory.poke(memAddress + 322, 48);
+    do Memory.poke(memAddress + 354, 24);
+    do Memory.poke(memAddress + 386, 12);
+
+    return;
+}
+
+
+  method void draw_Boom(int x, int y) {
+    var int memAddress;
+    let memAddress = 16384 + (y * 32) + x;
+
+    // column 0
+    do Memory.poke(memAddress, -7681);
+    do Memory.poke(memAddress + 32, 8705);
+    do Memory.poke(memAddress + 64, 9217);
+    do Memory.poke(memAddress + 96, 9217);
+    do Memory.poke(memAddress + 128, 9217);
+    do Memory.poke(memAddress + 160, 8705);
+    do Memory.poke(memAddress + 192, 8703);
+    do Memory.poke(memAddress + 224, 8449);
+    do Memory.poke(memAddress + 256, 8705);
+    do Memory.poke(memAddress + 288, 9217);
+    do Memory.poke(memAddress + 320, 9217);
+    do Memory.poke(memAddress + 352, 9217);
+    do Memory.poke(memAddress + 384, 9217);
+    do Memory.poke(memAddress + 416, 8705);
+    do Memory.poke(memAddress + 448, -7681);
+
+    // column 1
+    do Memory.poke(memAddress + 1, 32671);
+    do Memory.poke(memAddress + 33, 16528);
+    do Memory.poke(memAddress + 65, 16528);
+    do Memory.poke(memAddress + 97, 16528);
+    do Memory.poke(memAddress + 129, 16528);
+    do Memory.poke(memAddress + 161, 16528);
+    do Memory.poke(memAddress + 193, 16528);
+    do Memory.poke(memAddress + 225, 16528);
+    do Memory.poke(memAddress + 257, 16528);
+    do Memory.poke(memAddress + 289, 16528);
+    do Memory.poke(memAddress + 321, 16528);
+    do Memory.poke(memAddress + 353, 16528);
+    do Memory.poke(memAddress + 385, 16528);
+    do Memory.poke(memAddress + 417, 16528);
+    do Memory.poke(memAddress + 449, 32671);
+
+    // column 2
+    do Memory.poke(memAddress + 2, 3078);
+    do Memory.poke(memAddress + 34, 3598);
+    do Memory.poke(memAddress + 66, 2842);
+    do Memory.poke(memAddress + 98, 2482);
+    do Memory.poke(memAddress + 130, 2274);
+    do Memory.poke(memAddress + 162, 2274);
+    do Memory.poke(memAddress + 194, 2050);
+    do Memory.poke(memAddress + 226, 2050);
+    do Memory.poke(memAddress + 258, 2050);
+    do Memory.poke(memAddress + 290, 2050);
+    do Memory.poke(memAddress + 322, 2050);
+    do Memory.poke(memAddress + 354, 2050);
+    do Memory.poke(memAddress + 386, 2050);
+    do Memory.poke(memAddress + 418, 2050);
+    do Memory.poke(memAddress + 450, 2050);
+
+    return;
+}
+
+}
